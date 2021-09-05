@@ -1,19 +1,41 @@
 let colorArray = ['red','green'];
 let randomColor = colorArray[Math.floor(Math.random()*2)];
 let box = document.getElementsByClassName('box');
+let introScreen = document.querySelector('.intro');
+let content = document.querySelector('.content');
 let getColor = [];                                 
+// let cards = [...box];
+// console.log(cards)
 
 
-// question generator
+
+// start the game
+function startGame () {
+    let playBtn = document.querySelector('.intro button');
+    playBtn.addEventListener('click', () => {
+        introScreen.classList.add('fadeOut');
+        content.classList.add('fadeIn');
+
+
+    qstGenerator();
+    colorGenerator()
+    hideColors();
+    })
+}
+startGame();
+
+
+
+// question generator  called in startGame()
 let question = document.getElementById('question');
 function qstGenerator () {
-    question.innerHTML = `Guess the color: ${randomColor}`;
+    question.innerHTML = `Guess the color: &nbsp; ${randomColor}`;
+    question.style.color = `${randomColor}`;
 }
-qstGenerator();
 
 
 
-// Box color generator
+// Box color generator called in startGame()
 function colorGenerator() {
     for (let i=0; i<box.length; i++) {
         box[i].style.background = colorArray[Math.floor(Math.random()*2)];
@@ -22,11 +44,11 @@ function colorGenerator() {
         console.log(getColor)
 
     } 
+
 }
-colorGenerator()
   
 
-// hiding boxes
+// hiding boxes called in startGame()
 function hideColors() {
     setTimeout(() => {
         for (let i=0; i<box.length; i++) {
@@ -37,7 +59,6 @@ function hideColors() {
 
     )
 }
-hideColors();
 
 
 //selection of boxes
@@ -49,27 +70,34 @@ function selectionBoxes() {
 
     function colorFade(e) {
         e.target.style.opacity = '0';
-        // alert(e)
         console.log(e.target)
-
     }
 }
 selectionBoxes()
 
 
-//verifying
-// function verify() {
-//     if () {
+// restart the game
+function restart() {
+    let restartBtn = document.querySelector('.restartButton');
+    restartBtn.addEventListener('click', () => {
+        qstGenerator();
+        colorGenerator();
+        hideColors();
+    })
+}
+restart();
 
-//     }
-// }
+//quite the game
+function quit() {
+    let quitBtn = document.querySelector('.quitButton');
 
+    quitBtn.addEventListener('click', () => {
+        introScreen.classList.remove('fadeOut');
+        content.classList.remove('fadeIn');
+    })
+}
+quit();
 
-
-
-
-// getColor.push(box[i].style.background)                    //pushing color into array getColor
-        // console.log(getColor)
 
 
 
