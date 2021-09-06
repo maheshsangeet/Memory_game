@@ -89,16 +89,16 @@ h2 {
 .box {
     width: 14rem;
     height: 10rem;
-    background: linear-gradient(145deg, #636364, #474646);
+    background: linear-gradient(145deg, #494949, #353434);
     border-radius: 15%;
-    box-shadow: 9.91px 9.91px 15px #4e8666, -9.91px -9.91px 15px #95eea9;
+    box-shadow: 9.91px 9.91px 15px #365a45, -9.91px -9.91px 15px #95eea9;
 }
 
 /* buttons */
 .buttons {
     margin-top: 2rem;
 }
-.verifyButton, .quitButton, .restartButton {
+.verifyButton, .quitButton, .restartButton, #play-again  {
     font-family: 'Caveat', cursive;
     font-weight: bolder;
     cursor: pointer;
@@ -116,7 +116,7 @@ h2 {
     margin-top: .5rem; 
 }
 
-.verifyButton:active,.restartButton:active,.quitButton:active {
+.verifyButton:active,.restartButton:active,.quitButton:active ,#play-again:active {
     transform: scale(.98);
 }
 
@@ -128,4 +128,77 @@ h2 {
 }
 .restartButton {
     margin-right: 4.5rem;
+}
+
+
+
+
+/* Styles for congratulations modal */
+ .overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+  
+.popup {
+	margin: 22rem auto;
+	padding: 8rem 8rem 3rem;
+	background: #b8ecec;
+	border-radius: 5px;
+	width: 40%;
+	position: relative;
+	/* transition: all 5s ease-in-out; */
+    font-family: 'Caveat', cursive;
+
+}
+  
+.popup h2 {
+	color: #333;
+    margin-bottom: 3rem;
+    font-size: 5rem;
+
+}
+
+.popup .close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.popup .close:hover {
+	color: red;
+}
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+
+
+#play-again {
+	background-color: #f0c7f0;
+	padding: .75rem 2rem;
+	font-size: 2.5rem;
+	display: block;
+	margin: 0 auto;
+	border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+
+
 }
