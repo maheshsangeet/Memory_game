@@ -29,7 +29,7 @@ h2 {
 }
 
 
-/* introduction window */
+/* Introduction window */
 .intro {
     height: 50vh;
     display: flex;
@@ -65,7 +65,7 @@ h2 {
   }
 
 
-/* boxes section */
+/* Styles for boxe section */
   .content {
     position: absolute;
     top: 56%;
@@ -94,7 +94,8 @@ h2 {
     box-shadow: 9.91px 9.91px 15px #365a45, -9.91px -9.91px 15px #95eea9;
 }
 
-/* buttons */
+
+/* Styles for buttons */
 .buttons {
     margin-top: 2rem;
 }
@@ -158,7 +159,7 @@ h2 {
 	border-radius: 5px;
 	width: 40%;
 	position: relative;
-	/* transition: all 5s ease-in-out; */
+	transition: all 5s ease-in-out;
     font-family: 'Caveat', cursive;
 
 }
@@ -184,7 +185,7 @@ h2 {
 	color: red;
 }
 
-.show {
+#show {
 	visibility: visible !important;
 	opacity: 100 !important;
 }
@@ -199,6 +200,4 @@ h2 {
 	border-radius: 5px;
     cursor: pointer;
     font-family: 'Caveat', cursive;
-
-
 }
