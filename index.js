@@ -1,12 +1,10 @@
 const colorArray = ['red','green'];
+const question = document.getElementById('question');
 const box = document.getElementsByClassName('box');
 const modal = document.getElementById("popup1");
 
 let selectedBox= [];
 let getColor = [];                                 
-// let cards = [...box];      check difference b/w box and cards
-// console.log(cards)
-
 
 
 // ************* start the game ***********//
@@ -28,8 +26,8 @@ function startGame () {
 startGame();
 
 
-
 // ****** Random color generator ******//
+
 let randomColor = '';
 function randClr() {
     randomColor = colorArray[Math.floor(Math.random()*2)]; 
@@ -39,9 +37,7 @@ function randClr() {
 
 // ******* Question generator ********//
 
-let question = document.getElementById('question');
 function questionGenerator () {
-    console.log(question)
     randClr()
     question.innerHTML = `Guess the color: &nbsp; ${randomColor}`;
     question.style.color = `${randomColor}`;
@@ -56,10 +52,9 @@ function questionGenerator () {
 function colorGenerator() {
     for (let i=0; i<box.length; i++) {
         box[i].style.background = colorArray[Math.floor(Math.random()*2)];
-        getColor.push(box[i].style.background);             //pushing color into array getColor
+        getColor.push(box[i].style.background);            
 
-        console.log(getColor)
-
+        // console.log(getColor)
     } 
 
 }
@@ -112,13 +107,10 @@ function selectionBoxes() {
 
     function colorFade(e) {
         e.target.style.visibility = 'hidden';
-        // console.log(e.target.dataset.name) 
-        // let i=e.target.dataset.name;    
-        // console.log(parseInt(i),typeof(i))
-        console.log(getColor[parseInt(e.target.dataset.name)])
-        selectedBox.push(getColor[parseInt(e.target.dataset.name)])
-        console.log(selectedBox)
+        // console.log(getColor[parseInt(e.target.dataset.name)])
+        selectedBox.push(getColor[parseInt(e.target.dataset.name)]);
 
+        // console.log(selectedBox)
     }
 
 }
@@ -130,51 +122,49 @@ selectionBoxes()
 let result = '';
 function verifyValues() {
     const verifyBtn = document.querySelector('.verifyButton');
-
-
-    let clr = '';
-    if(randomColor == 'red') {
-        clr = 'green';
-    }else {
-        clr = 'red'
-    } 
     
-    
-    setTimeout(()=> console.log(randomColor),4000)
-
+    // setTimeout(()=> console.log(randomColor),4000)       
     verifyBtn.addEventListener('click',()=>{
 
-    // let guess = 0;
-    // for(let i=0;i<getColor.length;i++){
-    //     if(getColor[i]== randomColor){
-    //       guess++;
-    //     }
-    //   }
-    //   if(guess == selectedBox.length) {
-
-    //     let clr = '';
-    //     if(randomColor == 'red') {
-    //         // alert('true')
-    //         clr = 'green';
-    //     }else {
-    //         // alert('false')
-    //         clr = 'red'
-    //     }  
-
-
-        let compareValue = selectedBox.includes(clr); 
-        console.log(compareValue)
-        if(compareValue){
-            result = false;
-            congratulations();
-        }else {
-            result = true;
-            congratulations();
+        let guess = 0;
+        for(let i=0;i<getColor.length;i++){
+            if(getColor[i]== randomColor){
+            guess++;
+            }
         }
-    //   }else{
+        if(guess == selectedBox.length || guess < selectedBox.length) {
 
-    //     alert(`select some more boxes`)
-    //   }
+            let clr = '';
+            if(randomColor === 'red') {
+                clr = 'green';
+            }else {
+                clr = 'red'
+            } 
+
+
+            let compareValue= '';
+            for (let i=0; i<selectedBox.length; i++) {
+                if (selectedBox[i] === clr) {
+                    compareValue = false;
+                    break;
+                }else {
+                    compareValue = true;
+                }
+            }
+            
+
+            if(compareValue){
+                result = true;
+                congratulations();
+            }else {
+                console.log('succes shold show')
+                result = false;
+                congratulations();
+            }
+
+        }else{
+            alert('Select some more boxes')
+        }
 
 
         
@@ -192,10 +182,8 @@ function congratulations() {
     modal.id="show";
  
     if (result){
-        alert('success')    
         msg.innerHTML = 'Congratulations 🎉🎉';
     }else {
-        alert('try next time')
         msg.innerHTML = 'Better Luck Next time';
 
     }
@@ -217,7 +205,7 @@ function restart() {
         for (let i=0; i<box.length;i++){
             box[i].style.visibility='visible';
         }
-        result = '';
+
         selectedBox  = [];
         getColor=[];
         colorGenerator();
@@ -267,7 +255,8 @@ function playAgain(){
         for (let i=0; i<box.length;i++){
             box[i].style.visibility='visible';
         }
-
+        selectedBox  = [];
+        getColor=[];
         colorGenerator();
         hideColors();
     })
