@@ -15,8 +15,8 @@ body {
 }
 h1 {
     text-align: center;
-    font-size: 5rem;
-    padding: 1rem 0 1rem 0;
+    font-size: 4.5rem;
+    padding: .2rem 0;
     font-family: 'Satisfy', cursive;
     box-shadow: 0 0 20px 0px rgba(53, 52, 52, 0.384);
     
@@ -40,9 +40,9 @@ h2 {
   }
   
   .intro button {
-    padding: 2rem;
+    padding: .5rem 1.5rem;
     border: none;
-    font-size: 5rem;
+    font-size: 3.5rem;
     border-radius: 5px;
     cursor: pointer; 
     background: none;
